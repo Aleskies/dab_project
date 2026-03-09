@@ -1,0 +1,14 @@
+resources:
+  # Si ya tenías jobs u otros recursos, mantenlos
+  apps:
+    # my_fastapi_app:
+    #   name: my-fastapi-app
+    #   source_code_path: ../src/fastapi      # Ruta desde la raíz (sin "../")
+    #   # config:
+    #   #   command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+
+    my_streamlit_app:
+      name: my-streamlit-app
+      source_code_path: ../src/streamlit
+      # config:
+      #   command: ["streamlit", "run", "app.py", "--server.port", "8501"]
