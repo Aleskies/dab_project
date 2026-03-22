@@ -1,4 +1,52 @@
-# A sample job for dab_project.
+# resources:
+#   jobs:
+#     sample_job:
+#       name: sample_job
+
+#       trigger:
+#         periodic:
+#           interval: 1
+#           unit: DAYS
+
+#       # Parámetros a nivel de job (opcional, pueden servir como defaults)
+#       parameters:
+#         - name: catalog
+#           default: ${var.catalog}
+#         - name: schema
+#           default: ${var.schema}
+
+#       tasks:
+#         # Tarea 1: Notebook que recibe los parámetros como widgets
+#         - task_key: notebook_task
+#           notebook_task:
+#             notebook_path: ../src/sample_notebook.ipynb
+#             base_parameters:               # 👈 CLAVE: así pasas los parámetros al notebook
+#               catalog: ${var.catalog}
+#               schema: ${var.schema}
+
+#         # Tarea 2: Python wheel que depende del notebook
+#         - task_key: python_wheel_task
+#           depends_on:
+#             - task_key: notebook_task
+#           python_wheel_task:
+#             package_name: dab_project
+#             entry_point: main
+#             parameters:                    # 👈 Parámetros para el entry point
+#               - "--catalog"
+#               - "${var.catalog}"
+#               - "--schema"
+#               - "${var.schema}"
+#           environment_key: default         # Usa el entorno definido abajo
+
+#       # Definición del entorno con la rueda Python
+#       environments:
+#         - environment_key: default
+#           spec:
+#             client: "1"                    # Opcional, puedes omitirlo
+#             dependencies:
+#               - ../dist/*.whl
+
+# # A sample job for dab_project.
 
 resources:
   jobs:
@@ -25,6 +73,9 @@ resources:
         - task_key: notebook_task
           notebook_task:
             notebook_path: ../src/sample_notebook.ipynb
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
         - task_key: python_wheel_task
           depends_on:
             - task_key: notebook_task

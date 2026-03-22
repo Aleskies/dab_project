@@ -9,13 +9,12 @@ dependencies = [
     #
     # LIMITATION: for pipelines, dependencies are cached during development;
     # add dependencies to the 'environment' section of your pipeline.yml file instead
+    "databricks-connect==15.4.21",
 ]
 
 [dependency-groups]
 dev = [
     "pytest",
-    "databricks-dlt",
-    "databricks-connect>=15.4,<15.5",
     "ipykernel",
 ]
 

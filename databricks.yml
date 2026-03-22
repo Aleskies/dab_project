@@ -32,7 +32,8 @@ targets:
       host: https://dbc-6a5addb8-c11c.cloud.databricks.com
     variables:
       catalog: workspace
-      schema: ${workspace.current_user.short_name}
+      schema: default
+      # schema: ${workspace.current_user.short_name}
   prod:
     mode: production
     workspace:
